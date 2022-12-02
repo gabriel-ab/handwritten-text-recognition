@@ -29,27 +29,27 @@ from htrflor.network.model import HTRModel
 from htrflor.language.model import LanguageModel
 
 
-if __name__ == "__main__":
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--source", type=str, required=True)
-    parser.add_argument("--arch", type=str, default="flor")
+def main():
+    parser = argparse.ArgumentParser(add_help=__doc__)
+    parser.add_argument("--source", type=str, required=True, help="dataset/model name (bentham, iam, rimes, saintgall, washington)")
+    parser.add_argument("--arch", type=str, default="flor", help="network to be used (puigcerver, bluche, flor)")
 
-    parser.add_argument("--transform", action="store_true", default=False)
-    parser.add_argument("--cv2", action="store_true", default=False)
-    parser.add_argument("--image", type=str, default="")
+    parser.add_argument("--transform", action="store_true", default=False, help="transform dataset to the HDF5 file")
+    parser.add_argument("--cv2", action="store_true", default=False, help="visualize sample from transformed dataset")
+    parser.add_argument("--image", type=str, default="", help="predict a single image with the source parameter")
 
-    parser.add_argument("--train", action="store_true", default=False)
-    parser.add_argument("--test", action="store_true", default=False)
+    parser.add_argument("--train", action="store_true", default=False, help="train model with the source argument")
+    parser.add_argument("--test", action="store_true", default=False, help="evaluate and predict model with the source argument")
 
-    parser.add_argument("--kaldi_assets", action="store_true", default=False)
+    parser.add_argument("--kaldi_assets", action="store_true", default=False, help="save all assets for use with kaldi")
     parser.add_argument("--lm", action="store_true", default=False)
     parser.add_argument("--N", type=int, default=2)
 
-    parser.add_argument("--norm_accentuation", action="store_true", default=False)
-    parser.add_argument("--norm_punctuation", action="store_true", default=False)
+    parser.add_argument("--norm_accentuation", action="store_true", default=False, help="discard accentuation marks in the evaluation")
+    parser.add_argument("--norm_punctuation", action="store_true", default=False, help="discard punctuation marks in the evaluation")
 
-    parser.add_argument("--epochs", type=int, default=1000)
-    parser.add_argument("--batch_size", type=int, default=16)
+    parser.add_argument("--epochs", type=int, default=1000, help="number of epochs")
+    parser.add_argument("--batch_size", type=int, default=16, help="number of batches")
     args = parser.parse_args()
 
     raw_path = os.path.join("..", "raw", args.source)
@@ -266,3 +266,6 @@ if __name__ == "__main__":
             with open(os.path.join(output_path, f"evaluate{sufix}.txt"), "w") as lg:
                 lg.write(e_corpus)
                 print(e_corpus)
+
+if __name__ == "__main__":
+    main()

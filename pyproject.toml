@@ -1,0 +1,18 @@
+[build-system]
+build-backend = "setuptools.build_meta"
+requires = ["setuptools"]
+[project]
+name = "htrflor"
+version = "1.0.0"
+description = "Handwritten Text Recognition (HTR) system implemented using TensorFlow 2.x and trained on the Bentham/IAM/Rimes/Saint Gall/Washington offline HTR datasets"
+license = { file = "LICENSE" }
+dependencies = [
+    "tensorflow>=2.9.3",
+    "tqdm>=4.64.0",
+]
+
+[project.optional-dependencies]
+train = ["editdistance>=0.6.0", "kaldiio>=2.17.2", "opencv-python>=4.6.0.66"]
+
+[project.scripts]
+htrflor = "scripts.main:main"
