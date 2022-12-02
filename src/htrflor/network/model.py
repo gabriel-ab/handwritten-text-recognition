@@ -20,7 +20,7 @@ from keras.callbacks import CSVLogger, TensorBoard, ModelCheckpoint
 from keras.callbacks import EarlyStopping, ReduceLROnPlateau
 from keras.constraints import MaxNorm
 
-from network.layers import FullGatedConv2D, GatedConv2D, OctConv2D
+from .layers import FullGatedConv2D, GatedConv2D, OctConv2D
 from keras.layers import Conv2D, Bidirectional, LSTM, GRU, Dense
 from keras.layers import Dropout, BatchNormalization, LeakyReLU, PReLU
 from keras.layers import Input, Add, Activation, Lambda, MaxPooling2D, Reshape
