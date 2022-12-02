@@ -5,8 +5,8 @@ Gated implementations
                      This process will double number of filters to make one convolutional process.
 """
 
-from tensorflow.keras import backend as K
-from tensorflow.keras.layers import Layer, Conv2D, Multiply, Activation
+from keras import backend as K
+from keras.layers import Layer, Conv2D, Multiply, Activation
 
 """
 Tensorflow Keras layer implementation of the gated convolution.

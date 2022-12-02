@@ -21,12 +21,12 @@ import os
 import string
 import datetime
 
-from data import preproc as pp, evaluation
-from data.generator import DataGenerator, Tokenizer
-from data.reader import Dataset
+from htrflor.data import preproc as pp, evaluation
+from htrflor.data.generator import DataGenerator, Tokenizer
+from htrflor.data.reader import Dataset
 
-from network.model import HTRModel
-from language.model import LanguageModel
+from htrflor.network.model import HTRModel
+from htrflor.language.model import LanguageModel
 
 
 if __name__ == "__main__":
