@@ -15,4 +15,4 @@ dependencies = [
 train = ["editdistance>=0.6.0", "kaldiio>=2.17.2", "opencv-python>=4.6.0.66"]
 
 [project.scripts]
-htrflor = "scripts.main:main"
+htrflor = "htrflor.cli:main"
