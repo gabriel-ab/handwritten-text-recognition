@@ -6,6 +6,12 @@ name = "htrflor"
 version = "1.0.0"
 description = "Handwritten Text Recognition (HTR) system implemented using TensorFlow 2.x and trained on the Bentham/IAM/Rimes/Saint Gall/Washington offline HTR datasets"
 license = { file = "LICENSE" }
+maintainers = [
+    {name="gabriel-ab", email="gabriel.a07b@gmail.com"}
+]
+authors = [
+    {name="arthurflor23", email="arthurflor23@gmail.com"}
+]
 dependencies = [
     "tensorflow>=2.9.3",
     "tqdm>=4.64.0",
