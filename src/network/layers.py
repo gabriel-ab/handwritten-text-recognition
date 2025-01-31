@@ -5,8 +5,8 @@ Gated implementations
                      This process will double number of filters to make one convolutional process.
 """
 
-from tensorflow.keras import backend as K
-from tensorflow.keras.layers import Layer, Conv2D, Multiply, Activation
+from keras import backend as K
+from keras.layers import Layer, Conv2D, Multiply, Activation
 
 """
 Tensorflow Keras layer implementation of the gated convolution.
@@ -75,11 +75,11 @@ class FullGatedConv2D(Conv2D):
 
         return Multiply()([linear, sigmoid])
 
-    def compute_output_shape(self, input_shape):
-        """Compute shape of layer output"""
+    # def compute_output_shape(self, input_shape):
+    #     """Compute shape of layer output"""
 
-        output_shape = super(FullGatedConv2D, self).compute_output_shape(input_shape)
-        return tuple(output_shape[:3]) + (self.nb_filters * 2,)
+    #     output_shape = super(FullGatedConv2D, self).compute_output_shape(input_shape)
+    #     return tuple(output_shape[:3]) + (self.nb_filters,)
 
     def get_config(self):
         """Return the config of the layer"""

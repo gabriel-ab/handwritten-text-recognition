@@ -13,17 +13,18 @@ import numpy as np
 import tensorflow as tf
 
 from contextlib import redirect_stdout
-from tensorflow.keras import backend as K
-from tensorflow.keras import Model
+from keras import backend as K
+from keras import Model
 
-from tensorflow.keras.callbacks import CSVLogger, TensorBoard, ModelCheckpoint
-from tensorflow.keras.callbacks import EarlyStopping, ReduceLROnPlateau
-from tensorflow.keras.constraints import MaxNorm
+from keras.api.callbacks import CSVLogger, TensorBoard, ModelCheckpoint
+from keras.api.callbacks import EarlyStopping, ReduceLROnPlateau
+from keras.api.constraints import MaxNorm
 
 from network.layers import FullGatedConv2D, GatedConv2D, OctConv2D
-from tensorflow.keras.layers import Conv2D, Bidirectional, LSTM, GRU, Dense
-from tensorflow.keras.layers import Dropout, BatchNormalization, LeakyReLU, PReLU
-from tensorflow.keras.layers import Input, Add, Activation, Lambda, MaxPooling2D, Reshape
+from keras.api.layers import Conv2D, Bidirectional, LSTM, GRU, Dense
+from keras.api.layers import Dropout, BatchNormalization, LeakyReLU, PReLU
+from keras.api.layers import Input, Add, Activation, Lambda, MaxPooling2D, Reshape
+from keras.api.optimizers import AdamW
 
 
 """
@@ -153,8 +154,7 @@ class HTRModel:
         else:
             self.learning_schedule = False
 
-        optimizer = NormalizedOptimizer(
-            tf.keras.optimizers.AdamW(learning_rate=learning_rate, weight_decay=0.1))
+        optimizer = AdamW(learning_rate=learning_rate, weight_decay=0.1)
 
         # create and compile
         self.model = Model(inputs=inputs, outputs=outputs)
