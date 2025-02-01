@@ -176,9 +176,6 @@ class HTRModel:
             steps_per_epoch=None,
             validation_steps=None,
             validation_freq=1,
-            max_queue_size=10,
-            workers=1,
-            use_multiprocessing=False,
             **kwargs):
         """
         Model training on data yielded (fit function has support to generator).
@@ -199,9 +196,7 @@ class HTRModel:
                              validation_data=validation_data, shuffle=shuffle,
                              class_weight=class_weight, sample_weight=sample_weight,
                              initial_epoch=initial_epoch, steps_per_epoch=steps_per_epoch,
-                             validation_steps=validation_steps, validation_freq=validation_freq,
-                             max_queue_size=max_queue_size, workers=workers,
-                             use_multiprocessing=use_multiprocessing, **kwargs)
+                             validation_steps=validation_steps, validation_freq=validation_freq, **kwargs)
         return out
 
     def predict(self,
