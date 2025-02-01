@@ -436,39 +436,39 @@ def flor(input_size, d_model):
     cnn = Conv2D(filters=16, kernel_size=(3, 3), strides=(2, 2),
                  padding="same", kernel_initializer="he_uniform")(input_data)
     cnn = PReLU(shared_axes=[1, 2])(cnn)
-    cnn = BatchNormalization(renorm=True)(cnn)
+    cnn = BatchNormalization()(cnn)
     cnn = FullGatedConv2D(filters=16, kernel_size=(3, 3), padding="same")(cnn)
 
     cnn = Conv2D(filters=32, kernel_size=(3, 3), strides=(1, 1), padding="same", kernel_initializer="he_uniform")(cnn)
     cnn = PReLU(shared_axes=[1, 2])(cnn)
-    cnn = BatchNormalization(renorm=True)(cnn)
+    cnn = BatchNormalization()(cnn)
     cnn = FullGatedConv2D(filters=32, kernel_size=(3, 3), padding="same")(cnn)
 
     cnn = Conv2D(filters=40, kernel_size=(2, 4), strides=(2, 4), padding="same", kernel_initializer="he_uniform")(cnn)
     cnn = PReLU(shared_axes=[1, 2])(cnn)
-    cnn = BatchNormalization(renorm=True)(cnn)
+    cnn = BatchNormalization()(cnn)
     cnn = FullGatedConv2D(filters=40, kernel_size=(3, 3), padding="same", kernel_constraint=MaxNorm(4, [0, 1, 2]))(cnn)
     cnn = Dropout(rate=0.2)(cnn)
 
     cnn = Conv2D(filters=48, kernel_size=(3, 3), strides=(1, 1), padding="same", kernel_initializer="he_uniform")(cnn)
     cnn = PReLU(shared_axes=[1, 2])(cnn)
-    cnn = BatchNormalization(renorm=True)(cnn)
+    cnn = BatchNormalization()(cnn)
     cnn = FullGatedConv2D(filters=48, kernel_size=(3, 3), padding="same", kernel_constraint=MaxNorm(4, [0, 1, 2]))(cnn)
     cnn = Dropout(rate=0.2)(cnn)
 
     cnn = Conv2D(filters=56, kernel_size=(2, 4), strides=(1, 4), padding="same", kernel_initializer="he_uniform")(cnn)
     cnn = PReLU(shared_axes=[1, 2])(cnn)
-    cnn = BatchNormalization(renorm=True)(cnn)
+    cnn = BatchNormalization()(cnn)
     cnn = FullGatedConv2D(filters=56, kernel_size=(3, 3), padding="same", kernel_constraint=MaxNorm(4, [0, 1, 2]))(cnn)
     cnn = Dropout(rate=0.2)(cnn)
 
     cnn = Conv2D(filters=64, kernel_size=(3, 3), strides=(1, 1), padding="same", kernel_initializer="he_uniform")(cnn)
     cnn = PReLU(shared_axes=[1, 2])(cnn)
-    cnn = BatchNormalization(renorm=True)(cnn)
+    cnn = BatchNormalization()(cnn)
 
     cnn = MaxPooling2D(pool_size=(1, 2), strides=(1, 2), padding="valid")(cnn)
 
-    shape = cnn.get_shape()
+    shape = cnn.shape
     bgru = Reshape((shape[1], shape[2] * shape[3]))(cnn)
 
     bgru = Bidirectional(GRU(units=128, return_sequences=True, dropout=0.5))(bgru)

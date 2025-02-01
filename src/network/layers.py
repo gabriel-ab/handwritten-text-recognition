@@ -6,7 +6,7 @@ Gated implementations
 """
 
 from keras import backend as K
-from keras.layers import Layer, Conv2D, Multiply, Activation
+from keras.api.layers import Layer, Conv2D, Multiply, Activation
 
 """
 Tensorflow Keras layer implementation of the gated convolution.
